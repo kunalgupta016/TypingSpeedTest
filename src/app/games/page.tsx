@@ -1,0 +1,5 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { games } from "@/games/registry";
+export const metadata: Metadata = { title: "Typing games", description: "Choose a free FingerFox typing game and practice at your own pace." };
+export default function GamesPage() { return <main className="page-shell"><div className="page-heading"><p className="eyebrow">THE GAME ROOM</p><h1>Pick your practice.</h1><p>Every game is free, solo, and ready to play. Your progress stays in this browser.</p><p><Link className="button button-outline" href="/daily">Try today’s shared challenge <span aria-hidden="true">↗</span></Link></p></div><div className="catalog-list">{games.filter((g) => g.enabled).map((game, i) => <article className="game-card catalog-item" key={game.slug}><span className="game-number">{String(i + 1).padStart(2, "0")}</span><div><h2>{game.name}</h2><p>{game.shortDescription}</p></div><div className="catalog-meta">{game.tier}<br />1 minute</div><Link className="button button-outline" href={`/games/${game.slug}`}>Play <span aria-hidden="true">↗</span></Link></article>)}</div></main>; }
