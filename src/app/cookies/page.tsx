@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Cookie and storage policy" };
+export const metadata: Metadata = pageMetadata({
+  title: "Cookie and Browser Storage Policy",
+  description: "See what browser storage FingerFox uses for consent, appearance, game settings, local typing stats, and offline support.",
+  path: "/cookies",
+});
 
 export default function CookiesPage() {
   return <main className="page-shell text-page">

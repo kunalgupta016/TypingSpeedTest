@@ -1,6 +1,15 @@
 import Link from "next/link";
 import { games } from "@/games/registry";
 import { Card } from "@/components/ui/card";
+import { FAQList } from "@/components/faq-list";
+import { faqs } from "@/content/faqs";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Free Typing Games and Typing Test | FingerFox",
+  description: "Play free online typing games and take a one-minute typing test. Practice accuracy and speed, track progress privately, and play without an account.",
+  path: "/",
+});
 
 export default function Home() {
   return (
@@ -10,7 +19,7 @@ export default function Home() {
           <span className="wordmark"><span className="fox-mark">f</span> fingerfox</span>
           <p className="eyebrow">A little practice goes a long way</p>
           <h1>Find your <em>typing rhythm.</em></h1>
-          <p className="lead">Quick games, thoughtful practice, and progress that stays yours. No account needed to get started.</p>
+          <p className="lead">Free typing games, thoughtful practice, and progress that stays yours. No account needed to get started.</p>
           <div className="actions"><Link className="button button-primary" href="/games">Explore the games <span aria-hidden="true">↗</span></Link><Link className="button button-outline" href="/daily">Play today’s challenge</Link><Link className="button button-outline" href="/typing-test">Try a typing test</Link></div>
           <p className="quiet-note">Free to play · Progress saved on this device</p>
         </div>
@@ -23,10 +32,20 @@ export default function Home() {
         </div>
       </section>
       <section className="section-block">
-        <div className="section-heading"><div><p className="eyebrow">PICK UP AND PLAY</p><h2>A practice for every mood</h2></div><Link href="/games" className="text-link">All games <span aria-hidden="true">→</span></Link></div>
+        <div className="section-heading"><div><p className="eyebrow">PICK UP AND PLAY</p><h2>Free typing games for every mood</h2></div><Link href="/games" className="text-link">All games <span aria-hidden="true">→</span></Link></div>
         <div className="game-grid home-games">{games.slice(0, 3).map((game, i) => <Link href={`/games/${game.slug}`} className="game-card" key={game.slug}><span className="game-number">0{i + 1}</span><div><h3>{game.name}</h3><p>{game.shortDescription}</p></div><span className="game-arrow" aria-hidden="true">↗</span></Link>)}</div>
       </section>
       <Card className="callout"><div><p className="eyebrow">YOUR DATA, YOUR DEVICE</p><h2>Practice privately.</h2><p>Guest progress is stored in your browser. We don’t sell personal data or use advertising trackers.</p></div><Link className="button button-outline" href="/privacy">How privacy works <span aria-hidden="true">→</span></Link></Card>
+      <section className="section-block faq-section">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">GOOD TO KNOW</p>
+            <h2>Typing practice FAQs</h2>
+          </div>
+          <Link href="/faq" className="text-link">All answers <span aria-hidden="true">→</span></Link>
+        </div>
+        <FAQList items={faqs.slice(0, 4)} />
+      </section>
     </main>
   );
 }

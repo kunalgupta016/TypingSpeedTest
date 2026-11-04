@@ -28,13 +28,15 @@ For the visual review set, run `pnpm dev` and then `pnpm capture:screenshots` in
 
 For Vercel deployments, set the following environment variables in Project Settings > Environment Variables:
 
-- `NEXT_PUBLIC_SITE_URL` = your deployed HTTPS URL, for example `https://fingerfox.vercel.app`
+- `NEXT_PUBLIC_SITE_URL` = your deployed HTTPS URL, for example `https://finger-fox.vercel.app`
 - `NEXT_PUBLIC_LEGAL_NAME` = your public legal name or studio name
 - `NEXT_PUBLIC_BUSINESS_ADDRESS` = your public postal or remote-operation address
 - `NEXT_PUBLIC_CONTACT_EMAIL` = a monitored support email
 - `NEXT_PUBLIC_GRIEVANCE_CONTACT` = a privacy or complaint contact email
 
 The footer, contact page, metadata, sitemap, and robots file use these settings. `.env.example` shows the Vercel-ready defaults used for local builds.
+
+To verify the site in Google Search Console, create a URL-prefix property for `https://finger-fox.vercel.app/`, choose the HTML tag verification method, and copy the token from the `content` attribute. Add it to the Vercel project as `GOOGLE_SITE_VERIFICATION`, redeploy, then return to Search Console and click Verify. Once verified, open Sitemaps and submit `sitemap.xml`.
 
 ## Product boundaries
 

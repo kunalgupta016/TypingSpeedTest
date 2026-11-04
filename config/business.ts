@@ -10,7 +10,7 @@ export const business = {
   address: process.env.NEXT_PUBLIC_BUSINESS_ADDRESS ?? "Remote / Online operations",
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hello@fingerfox.app",
   grievanceContact: process.env.NEXT_PUBLIC_GRIEVANCE_CONTACT ?? "privacy@fingerfox.app",
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://fingerfox.vercel.app",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://finger-fox.vercel.app",
   privacyPolicyVersion: "1.0.0",
   termsVersion: "1.0.0",
   cookiePolicyVersion: "1.0.0",

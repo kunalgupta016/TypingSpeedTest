@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { business } from "../../../config/business";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Privacy policy" };
+export const metadata: Metadata = pageMetadata({
+  title: "FingerFox Privacy Policy",
+  description: "Read the FingerFox privacy policy to learn how guest typing scores, settings, and keyboard practice data are stored on your device.",
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   const hasContact = !business.grievanceContact.startsWith("PLACEHOLDER");

@@ -1,5 +1,9 @@
-import type { Metadata } from "next";
 import { TypingSession } from "@/games/shared/typing-session";
 import { getGame } from "@/games/registry";
-export const metadata: Metadata = { title: "Free online typing test", description: "Take a free one-minute typing test and see your speed, accuracy, and consistency." };
+import { pageMetadata } from "@/lib/seo";
+export const metadata = pageMetadata({
+  title: "Free Online Typing Test",
+  description: "Take a free one-minute typing test to check your words per minute, accuracy, and consistency. No sign-up needed; your result stays in your browser.",
+  path: "/typing-test",
+});
 export default function TypingTestPage() { return <main className="page-shell"><TypingSession game={getGame("zen-test")!} /></main>; }

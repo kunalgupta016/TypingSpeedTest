@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { business } from "../../../config/business";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Terms of use" };
+export const metadata: Metadata = pageMetadata({
+  title: "FingerFox Terms of Use",
+  description: "Read the terms for using FingerFox's free online typing games, typing test, and browser-based practice tools.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   const configured = !business.legalName.startsWith("PLACEHOLDER");

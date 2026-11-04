@@ -1,4 +1,29 @@
 import type { MetadataRoute } from "next";
 import { games } from "@/games/registry";
+import { guides } from "@/content/guides";
 import { business } from "../../config/business";
-export default function sitemap(): MetadataRoute.Sitemap { const base = business.siteUrl.startsWith("https://") ? business.siteUrl : "https://fingerfox.example"; const routes = ["", "/games", "/daily", "/typing-test", "/stats", "/settings", "/leaderboard", "/learn", "/about", "/contact", "/privacy", "/terms", "/cookies", "/refund"]; return [...routes.map((route) => ({ url: `${base}${route}`, lastModified: new Date("2026-11-02"), changeFrequency: "weekly" as const, priority: route === "" ? 1 : 0.6 })), ...games.map((game) => ({ url: `${base}/games/${game.slug}`, lastModified: new Date("2026-11-02"), changeFrequency: "monthly" as const, priority: 0.7 }))]; }
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const routes = [
+    "",
+    "/games",
+    "/daily",
+    "/typing-test",
+    "/learn",
+    "/faq",
+    "/about",
+    "/contact",
+    "/privacy",
+    "/terms",
+    "/cookies",
+    "/refund",
+  ];
+
+  return [
+    ...routes.map((route) => ({ url: new URL(route, business.siteUrl).toString() })),
+    ...games
+      .filter((game) => game.enabled)
+      .map((game) => ({ url: new URL(`/games/${game.slug}`, business.siteUrl).toString() })),
+    ...guides.map((guide) => ({ url: new URL(`/learn/${guide.slug}`, business.siteUrl).toString() })),
+  ];
+}
